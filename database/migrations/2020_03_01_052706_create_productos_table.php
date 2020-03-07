@@ -20,9 +20,9 @@ class CreateProductosTable extends Migration
             $table->string('modelo_del_producto');
             $table->boolean('estado_del_producto');
             $table->string('unidad_de_medida_del_producto');
-            $table->string('peso_del_producto');
+            $table->integer('peso_del_producto');
             $table->string('fecha_agregada_del_producto');
-            $table->string('precio_del_producto');
+            $table->integer('precio_del_producto');
             $table->timestamps();
         });
     }

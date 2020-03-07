@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cotizacion extends Model
 {
-    protected $table = "Cotizaciones";
+    protected $table = "cotizaciones";
 
     protected $primaryKey = 'id_cotizacion';
 
@@ -24,4 +24,24 @@ class Cotizacion extends Model
         'descuento'
     ];
 
+    public static function cantidad_de_cotizaciones(){
+        return Cotizacion::all()->count();
+    }
+
+    public static function ultima_cotizacion(){
+        return Cotizacion::all()->last();
+    }
+
+   
+    public function productos(){
+        return $this->belongsToMany(Producto::class,'detalle_cotizacion','id_cotizacion','id_producto')
+            ->withPivot('id_detalle_cotizacion','cantidad','precio_de_venta');
+    }
+
+    public function suma_ultima_cotizacion(){
+        return $this->belongsToMany(Producto::class,'detalle_cotizacion','id_cotizacion','id_producto')
+        ->withPivot('cantidad','precio_de_venta')->sum('precio_de_venta');
+}
+
+    
 }

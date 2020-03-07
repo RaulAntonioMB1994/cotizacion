@@ -15,8 +15,8 @@ class CreateDetalleCotizacionTable extends Migration
     {
         Schema::create('detalle_cotizacion', function (Blueprint $table) {
             $table->bigIncrements('id_detalle_cotizacion');
-            $table->string('cantidad');
-            $table->string('precio_de_venta');
+            $table->integer('cantidad');
+            $table->integer('precio_de_venta');
             $table->timestamps();
         });
     }

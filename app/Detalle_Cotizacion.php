@@ -16,5 +16,8 @@ class Detalle_Cotizacion extends Model
         'precio_de_venta',
         'id_cotizacion',
         'id_producto'
-    ]
+    ];
+
+
+    
 }
