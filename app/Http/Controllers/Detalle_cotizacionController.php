@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Cotizacion;
 use App\Detalle_Cotizacion;
 use App\Producto;
+use Carbon\Carbon;
+
+use Barryvdh\DomPDF\Facade as PDF;
+
 class Detalle_cotizacionController extends Controller
 {
     /**
@@ -30,6 +34,25 @@ class Detalle_cotizacionController extends Controller
   
 
     }
+
+
+public function pdf()
+{
+
+
+    $ultima_cotizacion = Cotizacion::ultima_cotizacion();
+        $cantidad_de_cotizaciones = Cotizacion::cantidad_de_cotizaciones();
+        $descuento = $ultima_cotizacion->descuento/100;
+        $precio_descuento = $ultima_cotizacion->suma_ultima_cotizacion()*$descuento;
+        $gran_total = $ultima_cotizacion->suma_ultima_cotizacion()-$precio_descuento;
+
+        $pdf = PDF::loadView('exportacion.pdf',compact('cantidad_de_cotizaciones','ultima_cotizacion','descuento','precio_descuento','gran_total'));
+    //    return View('exportacion.pdf',compact('cantidad_de_cotizaciones','ultima_cotizacion','descuento','precio_descuento','gran_total'));
+
+    return $pdf->stream();
+            //  return $pdf->download('detalle_cotizacion.pdf');
+
+}
 
     /**
      * Show the form for creating a new resource.

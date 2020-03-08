@@ -23,6 +23,8 @@ Route::post('cotizacion','CotizacionController@store')->name('cotizacion.store')
 
 Route::get('cotizacion/detalle_cotizacion/index','Detalle_cotizacionController@index')->name('detalle_cotizacion.index');
 
+Route::get('cotizacion/detalle_cotizacion/pdf','Detalle_cotizacionController@pdf')->name('detalle_cotizacion.pdf');
+
 Route::get('cotizacion/detalle_cotizacion/create', 'Detalle_cotizacionController@create')->name('detalle_cotizacion.create');
 
 Route::post('cotizacion/detalle_cotizacion/store', 'Detalle_cotizacionController@store')->name('detalle_cotizacion.store');
