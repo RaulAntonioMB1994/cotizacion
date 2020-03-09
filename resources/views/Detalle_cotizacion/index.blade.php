@@ -14,9 +14,7 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#descuento">
             Descuento
         </button>
-        <a href="{{url('/cotizacion/detalle_cotizacion/pdf')}}" class="btn btn-primary btn-fab">
-            Productos
-        </a>
+       
         <a href="{{route('detalle_cotizacion.pdf')}}" class="btn btn-primary btn-fab">
             Imprimir
         </a>

@@ -47,10 +47,8 @@ public function pdf()
         $gran_total = $ultima_cotizacion->suma_ultima_cotizacion()-$precio_descuento;
 
         $pdf = PDF::loadView('exportacion.pdf',compact('cantidad_de_cotizaciones','ultima_cotizacion','descuento','precio_descuento','gran_total'));
-    //    return View('exportacion.pdf',compact('cantidad_de_cotizaciones','ultima_cotizacion','descuento','precio_descuento','gran_total'));
-
-    return $pdf->stream();
-            //  return $pdf->download('detalle_cotizacion.pdf');
+  
+             return $pdf->download('detalle_cotizacion.pdf');
 
 }
 
